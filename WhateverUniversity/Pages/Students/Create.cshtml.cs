@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ContosoUniversity.Data;
+using WhateverUniversity.Data;
 using WhateverUniversity.Models;
 
 namespace WhateverUniversity.Pages.Students
 {
     public class CreateModel : PageModel
     {
-        private readonly ContosoUniversity.Data.SchoolContext _context;
+        private readonly WhateverUniversity.Data.SchoolContext _context;
 
-        public CreateModel(ContosoUniversity.Data.SchoolContext context)
+        public CreateModel(WhateverUniversity.Data.SchoolContext context)
         {
             _context = context;
         }

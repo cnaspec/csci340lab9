@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WhateverUniversity.Models;
 
-namespace ContosoUniversity.Data
+namespace WhateverUniversity.Data
 {
     public class SchoolContext : DbContext
     {
