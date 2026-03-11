@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using WhateverUniversity.Data;
 using WhateverUniversity.Models;
 
-namespace WhateverUniversity.Pages.Students
+namespace WhateverUniversity.Pages_Students
 {
     public class EditModel : PageModel
     {
@@ -30,7 +30,7 @@ namespace WhateverUniversity.Pages.Students
                 return NotFound();
             }
 
-            var student =  await _context.Student.FirstOrDefaultAsync(m => m.ID == id);
+            var student =  await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
             if (student == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace WhateverUniversity.Pages.Students
 
         private bool StudentExists(int id)
         {
-            return _context.Student.Any(e => e.ID == id);
+            return _context.Students.Any(e => e.ID == id);
         }
     }
 }

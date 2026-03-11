@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using WhateverUniversity.Data;
 using WhateverUniversity.Models;
 
-namespace WhateverUniversity.Pages.Students
+namespace WhateverUniversity.Pages_Students
 {
     public class CreateModel : PageModel
     {
@@ -35,7 +35,7 @@ namespace WhateverUniversity.Pages.Students
                 return Page();
             }
 
-            _context.Student.Add(Student);
+            _context.Students.Add(Student);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

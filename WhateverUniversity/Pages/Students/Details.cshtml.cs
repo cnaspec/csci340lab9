@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using WhateverUniversity.Data;
 using WhateverUniversity.Models;
 
-namespace WhateverUniversity.Pages.Students
+namespace WhateverUniversity.Pages_Students
 {
     public class DetailsModel : PageModel
     {
@@ -28,7 +28,7 @@ namespace WhateverUniversity.Pages.Students
                 return NotFound();
             }
 
-            var student = await _context.Student.FirstOrDefaultAsync(m => m.ID == id);
+            var student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
 
             if (student is not null)
             {

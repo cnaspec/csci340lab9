@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using WhateverUniversity.Data;
 using WhateverUniversity.Models;
 
-namespace WhateverUniversity.Pages.Students
+namespace WhateverUniversity.Pages_Students
 {
     public class IndexModel : PageModel
     {
@@ -23,7 +23,7 @@ namespace WhateverUniversity.Pages.Students
 
         public async Task OnGetAsync()
         {
-            Student = await _context.Student.ToListAsync();
+            Student = await _context.Students.ToListAsync();
         }
     }
 }
