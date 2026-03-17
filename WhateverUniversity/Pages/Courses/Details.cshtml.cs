@@ -19,7 +19,7 @@ namespace WhateverUniversity.Pages.Courses
             _context = context;
         }
 
-        public Course Course { get; set; } = default!;
+        public Course Course { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,16 +28,15 @@ namespace WhateverUniversity.Pages.Courses
                 return NotFound();
             }
 
-            var course = await _context.Courses.FirstOrDefaultAsync(m => m.CourseID == id);
+            Course = await _context.Courses
+                .Include(c => c.Department).FirstOrDefaultAsync(m => m.CourseID == id);
 
-            if (course is not null)
+            if (Course == null)
             {
-                Course = course;
-
-                return Page();
+                return NotFound();
             }
-
-            return NotFound();
+            return Page();
+        
         }
     }
 }

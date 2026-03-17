@@ -24,21 +24,19 @@ namespace WhateverUniversity.Pages.Courses
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
+               if (id == null)
             {
                 return NotFound();
             }
 
-            var course = await _context.Courses.FirstOrDefaultAsync(m => m.CourseID == id);
+            Course = await _context.Courses
+                .Include(c => c.Department).FirstOrDefaultAsync(m => m.CourseID == id);
 
-            if (course is not null)
+            if (Course == null)
             {
-                Course = course;
-
-                return Page();
+                return NotFound();
             }
-
-            return NotFound();
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
@@ -48,15 +46,16 @@ namespace WhateverUniversity.Pages.Courses
                 return NotFound();
             }
 
-            var course = await _context.Courses.FindAsync(id);
-            if (course != null)
+            Course = await _context.Courses.FindAsync(id);
+
+            if (Course != null)
             {
-                Course = course;
                 _context.Courses.Remove(Course);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");
+        
         }
     }
 }
